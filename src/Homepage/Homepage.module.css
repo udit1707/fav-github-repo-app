@@ -1,0 +1,42 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.title {
+    flex: 1 0 0;
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 550;
+}
+
+.btn {
+    margin-left: 0.5rem;
+}
+
+.noFav {
+    border: 1px solid black;
+    padding: 5rem;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 5rem;
+}
+
+.favContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    overflow-y: scroll;
+}
