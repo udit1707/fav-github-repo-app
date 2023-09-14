@@ -39,7 +39,7 @@ const Accordion: React.FC<AccordionProps> = ({
       <div className={styles.accordion}>
         <div className={styles.header}>
           <div className={styles.name}>{name}</div>
-          <div className={styles.btn}>
+          <div className={styles.iconCnt}>
             <FaEye className={styles.icon} onClick={handleBodyView} />
             <MdDelete className={styles.icon} onClick={handleDeleteIconClick} />
           </div>

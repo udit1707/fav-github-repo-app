@@ -1,11 +1,6 @@
 .masterBtn {
-    background-color: #6558f5;
-    color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 1rem;
+    @apply bg-purple-600 text-white border-none outline-none cursor-pointer p-4 text-sm font-semibold rounded-full;
     font-size: 0.8rem;
-    font-weight: 600;
     border-radius: 1rem;
-}
+  }
+  

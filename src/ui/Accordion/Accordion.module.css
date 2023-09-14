@@ -1,33 +1,24 @@
 .accordion {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    margin-top: 2rem;
-    border: 1px solid purple;
-    border-radius: 1.2rem;
+  @apply flex flex-col items-start p-4 mt-8 border border-purple-500 rounded-lg;
 }
 
 .header {
-display: flex;
-flex-direction: row;
-align-items: center;
-color: black;
-font-size: 1.5rem;
-font-weight: 500;
-width: 100%;
+  @apply flex flex-row items-center text-black font-medium w-full;
+  font-size: 1.5rem;
 }
 
 .name {
-    flex: 1 0 0;
+  @apply flex-1;
 }
 
 .icon {
-    cursor: pointer;
-    margin-right: 0.5rem;
+  @apply cursor-pointer mr-2;
 }
 
 .body {
-    font-size: 2rem;
-    color: #6558f5;
+  @apply text-2xl text-purple-600;
+}
+
+.iconCnt {
+  @apply flex flex-row items-center;
 }

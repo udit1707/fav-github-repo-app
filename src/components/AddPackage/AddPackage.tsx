@@ -137,7 +137,7 @@ const AddPackage = () => {
                   checked={selectedOption?.id === i.id}
                   onChange={() => handleRadioChange(i)}
                 />
-                <span>{i.name}</span>
+                <span className={styles.itemName}>{i.name}</span>
               </div>
             );
           })}

@@ -1,45 +1,28 @@
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 4rem;
+  @apply flex flex-col items-start p-16;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 2rem;
-    width: 100%;
+  @apply flex items-center flex-row mb-8 w-full;
 }
 
 .title {
-    flex: 1 0 0;
-    font-size: 2.5rem;
-    color: black;
-    font-weight: 550;
+  @apply flex-1 font-semibold text-black;
+  font-size: 2.5rem;
 }
 
 .btn {
-    margin-left: 0.5rem;
+  @apply ml-2;
 }
 
 .noFav {
-    border: 1px solid black;
-    padding: 5rem;
-    color: black;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-top: 5rem;
+  @apply border border-black p-20 text-black text-lg font-normal mt-20;
 }
 
 .favContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
+  @apply flex flex-col items-stretch w-full;
 }
 
 .homeNoFavs {
-    align-items: center;
+  @apply items-center;
 }
