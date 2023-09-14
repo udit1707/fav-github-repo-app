@@ -1,0 +1,6 @@
+.masterBtn {
+    @apply bg-purple-600 text-white border-none outline-none cursor-pointer p-4 text-sm font-semibold rounded-full;
+    font-size: 0.8rem;
+    border-radius: 1rem;
+  }
+  

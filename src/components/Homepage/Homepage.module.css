@@ -1,0 +1,28 @@
+.home {
+  @apply flex flex-col items-start p-16;
+}
+
+.header {
+  @apply flex items-center flex-row mb-8 w-full;
+}
+
+.title {
+  @apply flex-1 font-semibold text-black;
+  font-size: 2.5rem;
+}
+
+.btn {
+  @apply ml-2;
+}
+
+.noFav {
+  @apply border border-black p-20 text-black text-lg font-normal mt-20;
+}
+
+.favContainer {
+  @apply flex flex-col items-stretch w-full;
+}
+
+.homeNoFavs {
+  @apply items-center;
+}

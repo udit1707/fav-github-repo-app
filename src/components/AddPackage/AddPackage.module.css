@@ -1,0 +1,58 @@
+.addPackage {
+  @apply flex flex-col items-center p-16;
+}
+
+.add {
+  @apply flex flex-col items-start w-full mb-8 px-8;
+  @apply py-2;
+}
+
+.searchLabel,
+.whyLabel {
+  @apply text-black text-lg font-bold;
+  @apply text-lg font-bold;
+}
+
+.searchInput {
+  @apply w-full;
+  @apply py-2 border border-gray-300;
+}
+
+.fetchedList {
+  @apply mb-8 px-8;
+  @apply h-28 overflow-y-scroll;
+}
+
+.enterWhy {
+  @apply mb-8 px-8 flex flex-col w-full items-end;
+}
+
+.cnt {
+  @apply flex flex-col w-full mb-16;
+  @apply mb-16;
+}
+
+textarea {
+  @apply h-40 border border-gray-300;
+}
+
+.successBtn,
+.submitBtn {
+  @apply w-20;
+}
+
+.successBtn {
+  @apply bg-green-400;
+}
+
+.fetchedList {
+  @apply flex flex-col items-start w-full overflow-y-scroll h-28 mr-16 pl-16;
+}
+
+.item {
+  @apply flex flex-row;
+}
+
+.itemName {
+  @apply ml-4;
+}

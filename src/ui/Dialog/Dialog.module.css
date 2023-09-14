@@ -1,0 +1,31 @@
+.container {
+  @apply fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50;
+}
+
+.dialog {
+  @apply rounded-lg bg-white flex flex-col border border-black p-6;
+}
+
+.header {
+  @apply text-lg text-black flex items-center;
+}
+
+.label {
+  @apply flex-1 text-left;
+}
+
+.cancelIcon {
+  @apply ml-4 cursor-pointer;
+}
+
+.footer {
+  @apply flex flex-row justify-end items-center mt-4;
+}
+
+.cancel {
+  @apply border border-black p-2 bg-white text-black text-sm mr-4 rounded-md cursor-pointer;
+}
+
+.delete {
+  @apply border-none p-2 bg-red-500 text-white text-sm rounded-md cursor-pointer;
+}
