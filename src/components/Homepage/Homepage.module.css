@@ -15,7 +15,7 @@
 
 .title {
     flex: 1 0 0;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: black;
     font-weight: 550;
 }
@@ -38,4 +38,8 @@
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+}
+
+.homeNoFavs {
+    align-items: center;
 }

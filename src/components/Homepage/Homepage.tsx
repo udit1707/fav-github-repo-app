@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 import Accordion from "../../ui/Accordion";
 import MasterButton from "../../ui/MasterButton";
@@ -35,7 +36,7 @@ const Homepage = ({}) => {
   }, []);
 
   return (
-    <div className={styles.home}>
+    <div className={classNames(styles.home, {[styles.homeNoFavs]: !favs || favs?.length === 0})}>
       <div className={styles.header}>
         <div className={styles.title}>
           {" "}

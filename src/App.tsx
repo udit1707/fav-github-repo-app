@@ -6,8 +6,10 @@ import AddPackage from "./components/AddPackage";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Routes>
+      <Route element={<AddPackage />} path="/add-package" />
+      <Route element={<Homepage />} path="/" />
+    </Routes>
   );
 }
 
