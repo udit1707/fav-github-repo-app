@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Homepage from "./Homepage/Homepage";
-import AddPackage from "./AddPackage";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./components/Homepage/";
+import AddPackage from "./components/AddPackage";
 
 function App() {
   return (

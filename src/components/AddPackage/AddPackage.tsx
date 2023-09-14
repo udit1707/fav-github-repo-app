@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./AddPackage.module.css";
-import MasterButton from "../MasterButton";
 import { useNavigate } from "react-router-dom";
+
 import BarLoader from "react-spinners/ClipLoader";
+import MasterButton from "../../ui/MasterButton";
+import styles from "./AddPackage.module.css";
 
 const AddPackage = () => {
   const [packages, setPackages] = useState<any | null>(null);
   const [selectedOption, setSelectedOption] = useState<any | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [why, setWhy] = useState("");
-  const [success,setSuccess] = useState(false);
-  const [isLoading,setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const timeroutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navigate = useNavigate();
 
@@ -18,23 +19,19 @@ const AddPackage = () => {
     if (searchQuery.length === 0) return;
     setIsLoading(true);
     const fetchedResult = fetch(
-        `https://api.github.com/search/repositories?q=${searchQuery}`
+      `https://api.github.com/search/repositories?q=${searchQuery}`
     );
     fetchedResult
       .then((res) => {
-        console.log(res);
-        if(res.status === 500)
-        {
-            setIsLoading(false);
-            alert("API error");
+        if (res.status === 500) {
+          setIsLoading(false);
+          alert("API error");
         }
         return res.json();
       })
       .then((res) => {
-        console.log(res);
-        if(res.items)
-        {
-            setIsLoading(false);
+        if (res.items) {
+          setIsLoading(false);
         }
         setPackages(res.items);
       })
@@ -42,28 +39,25 @@ const AddPackage = () => {
         setSuccess(false);
         setIsLoading(false);
         alert("API error");
-        console.log(err);
       });
   };
 
-  const handleRadioChange = (i:any) => {
+  const handleRadioChange = (i: any) => {
     const selectedRepo = {
-        id: i.id,
-        name: i.name
-    }
+      id: i.id,
+      name: i.name,
+    };
     setSelectedOption(selectedRepo);
   };
 
   const checkDuplicate = (favs: any) => {
-    console.log(favs);
     return JSON.parse(favs).some((i: any) => i.name === selectedOption.name);
   };
 
   const handleSubmit = () => {
-    if(!selectedOption)
-    {
-        alert("Select the package!!");
-        return;
+    if (!selectedOption) {
+      alert("Select the package!!");
+      return;
     }
     if (why?.length === 0) {
       alert("Select Reason");
@@ -80,23 +74,21 @@ const AddPackage = () => {
       name: selectedOption.name,
       reason: why,
     };
-    
-    const newFavs = favs? [...JSON.parse(favs), newFav]:[newFav]
+
+    const newFavs = favs ? [...JSON.parse(favs), newFav] : [newFav];
     localStorage.setItem("fav-packages", JSON.stringify(newFavs));
     setSuccess(true);
-    console.log(newFavs);
   };
 
-  useEffect(()=>{
-    if(success)
-    {
-        const redirectTimeout = setTimeout(() => {
-            navigate('/');
-          }, 50);
-      
-          return () => clearTimeout(redirectTimeout);
+  useEffect(() => {
+    if (success) {
+      const redirectTimeout = setTimeout(() => {
+        navigate("/");
+      }, 50);
+
+      return () => clearTimeout(redirectTimeout);
     }
-  },[success])
+  }, [success]);
 
   useEffect(() => {
     if (timeroutRef.current) clearTimeout(timeroutRef.current);
@@ -109,7 +101,9 @@ const AddPackage = () => {
   return (
     <div className={styles.addPackage}>
       <div className={styles.add}>
-        <span className={styles.searchLabel}>Search for Github Repositories</span>
+        <span className={styles.searchLabel}>
+          Search for Github Repositories
+        </span>
         <input
           className={styles.searchInput}
           type="text"
@@ -123,26 +117,32 @@ const AddPackage = () => {
       {isLoading && (
         <BarLoader
           loading={true}
-          cssOverride={{ borderColor: "#6558f5", width: "5rem", height: "5rem" }}
+          cssOverride={{
+            borderColor: "#6558f5",
+            width: "5rem",
+            height: "5rem",
+          }}
         />
       )}
 
-      {packages?.length > 0 && <div className={styles.fetchedList}>
-        {packages?.map((i:any, index:number) => {
-          return (
-            <div key={index} className={styles.item}>
-              <input
-                type="radio"
-                //   name="radio-options"
-                value={i.id}
-                checked={selectedOption?.id === i.id}
-                onChange={()=>handleRadioChange(i)}
-              />
-              <span>{i.name}</span>
-            </div>
-          );
-        })}
-      </div>}
+      {packages?.length > 0 && (
+        <div className={styles.fetchedList}>
+          {packages?.map((i: any, index: number) => {
+            return (
+              <div key={index} className={styles.item}>
+                <input
+                  type="radio"
+                  //   name="radio-options"
+                  value={i.id}
+                  checked={selectedOption?.id === i.id}
+                  onChange={() => handleRadioChange(i)}
+                />
+                <span>{i.name}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <div className={styles.enterWhy}>
         <div className={styles.cnt}>
@@ -154,17 +154,16 @@ const AddPackage = () => {
             }}
           />
         </div>
-        {!success && <MasterButton
-          name="Submit"
-          handleClick={handleSubmit}
-          className={styles.submitBtn}
-        />}
-        {
-            success && <MasterButton
-            name="Success"
-            className={styles.successBtn}
+        {!success && (
+          <MasterButton
+            name="Submit"
+            handleClick={handleSubmit}
+            className={styles.submitBtn}
           />
-        }
+        )}
+        {success && (
+          <MasterButton name="Success" className={styles.successBtn} />
+        )}
       </div>
     </div>
   );

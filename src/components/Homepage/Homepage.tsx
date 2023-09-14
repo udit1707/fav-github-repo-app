@@ -1,34 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-import MasterButton from "../MasterButton";
-import styles from "./Homepage.module.css";
-import Accordion from "../Accordion";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import Accordion from "../../ui/Accordion";
+import MasterButton from "../../ui/MasterButton";
+import styles from "./Homepage.module.css";
 
 const Homepage = ({}) => {
   const [favs, setFavs] = useState<any[] | null>(null);
 
   const fetchFavs = () => {
-    console.log(localStorage.getItem("fav-packages"));
-
     const storedData = localStorage.getItem("fav-packages");
 
-    if (storedData !== null) {
-      const pkgs = JSON.parse(storedData);
+    if (!storedData) return;
 
-      if (Array.isArray(pkgs) && pkgs.length > 0) {
-        setFavs(pkgs);
-      }
+    const pkgs = JSON.parse(storedData);
+
+    if (Array.isArray(pkgs) && pkgs.length > 0) {
+      setFavs(pkgs);
     }
   };
 
-  useEffect(() => {
-    fetchFavs();
-  }, []);
-
-  console.log(favs);
-
   const handleDel = (id: any) => {
-    console.log("delete", favs, id);
     setFavs((favs: any) => {
       if (favs) {
         const newFavs = favs.filter((i: any, index: any) => index !== id);
@@ -38,10 +30,17 @@ const Homepage = ({}) => {
     });
   };
 
+  useEffect(() => {
+    fetchFavs();
+  }, []);
+
   return (
     <div className={styles.home}>
       <div className={styles.header}>
-        <div className={styles.title}> Welcome to Favorite Github Repositories</div>
+        <div className={styles.title}>
+          {" "}
+          Welcome to Favorite Github Repositories
+        </div>
         <Link to="/add-package">
           <MasterButton name="Add Fav" className={styles.btn} />
         </Link>
